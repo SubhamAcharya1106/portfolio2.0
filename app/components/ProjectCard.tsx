@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 
-type Props = {
+export type ProjectProps = {
   title: string;
   description: string;
   tech: string[];
 };
 
-const ProjectCard = ({ title, description, tech }: Props) => {
+export default function ProjectCard({ title, description, tech }: ProjectProps) {
   return (
     <motion.div
       whileHover={{
@@ -36,6 +36,4 @@ const ProjectCard = ({ title, description, tech }: Props) => {
       </div>
     </motion.div>
   );
-};
-
-export default ProjectCard;
+}
