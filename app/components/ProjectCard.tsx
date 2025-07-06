@@ -1,15 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import React from 'react';
 
-interface ProjectCardProps {
+type Props = {
   title: string;
   description: string;
   tech: string[];
-}
+};
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tech }) => {
+const ProjectCard = ({ title, description, tech }: Props) => {
   return (
     <motion.div
       whileHover={{
