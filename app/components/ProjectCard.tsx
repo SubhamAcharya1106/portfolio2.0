@@ -20,15 +20,15 @@ export default function ProjectCard({ title, description, tech }: ProjectProps) 
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white border rounded-2xl p-5 w-full sm:w-[300px] transition-all duration-300"
+      className="bg-white dark:bg-[#111827] border rounded-2xl p-5 w-full sm:w-[300px] transition-all duration-300"
     >
-      <h3 className="text-xl font-semibold mb-2 text-blue-600">{title}</h3>
-      <p className="text-gray-700 text-sm mb-3">{description}</p>
+      <h3 className="text-xl font-semibold mb-2 text-blue-600 dark:text-yellow-400">{title}</h3>
+      <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{description}</p>
       <div className="flex flex-wrap gap-2">
         {tech.map((t) => (
           <span
             key={t}
-            className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full"
+            className="bg-blue-100 dark:bg-indigo-800 text-blue-800 dark:text-white text-xs font-medium px-2 py-1 rounded-full"
           >
             {t}
           </span>
