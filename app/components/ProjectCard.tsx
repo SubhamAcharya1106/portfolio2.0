@@ -1,52 +1,42 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
+import React from 'react';
 
-const projects = [
-  {
-    title: 'E-commerce Web Testing',
-    description: 'Tested entire user flow: login, product search, cart, and payment gateway.',
-    tech: ['JIRA', 'Postman', 'STLC'],
-  },
-  {
-    title: 'Quick Commerce App QA',
-    description: 'Led QA for a hyperlocal delivery app. Reduced bugs by 40%.',
-    tech: ['Android Studio', 'SQL', 'Regression'],
-  },
-  {
-    title: 'Banking API Automation',
-    description: 'Wrote and executed 250+ test cases for API validations and edge cases.',
-    tech: ['Postman', 'JMeter', 'MongoDB'],
-  },
-];
-
-export default function ProjectsSection() {
-  return (
-    <motion.section
-      id="projects"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="px-6 py-20 bg-gray-100 dark:bg-gray-950 text-black dark:text-white"
-    >
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Projects</h2>
-        <p className="text-gray-600 dark:text-gray-300 mb-10">
-          Some highlights of what I’ve tested and delivered.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard
-              key={i}
-              title={project.title}
-              description={project.description}
-              tech={project.tech}
-            />
-          ))}
-        </div>
-      </div>
-    </motion.section>
-  );
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  tech: string[];
 }
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, tech }) => {
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+        boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)',
+      }}
+      whileTap={{ scale: 0.97 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="bg-white border rounded-2xl p-5 w-full sm:w-[300px] transition-all duration-300"
+    >
+      <h3 className="text-xl font-semibold mb-2 text-blue-600">{title}</h3>
+      <p className="text-gray-700 text-sm mb-3">{description}</p>
+      <div className="flex flex-wrap gap-2">
+        {tech.map((t) => (
+          <span
+            key={t}
+            className="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+export default ProjectCard;
