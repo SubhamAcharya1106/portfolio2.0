@@ -6,8 +6,9 @@ const navItems = [
   { label: 'Home', id: 'home' },
   { label: 'About', id: 'about' },
   { label: 'Projects', id: 'projects' },
-  { label: 'Resume', id: 'resume' },
-  { label: 'Contact', id: 'contact' },
+   { label: 'Experience', id: 'experience' },
+  { label: 'Resume', href: '/Resume-Subham_Acharya.pdf', external: true },
+  { label: 'Lets Chat', id: 'contact' },
 ];
 
 export default function Navbar() {
@@ -29,16 +30,28 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <h1 className="text-xl font-bold text-blue-600 dark:text-white">Portfolio 2.0</h1>
         <div className="space-x-6 hidden md:flex">
-          {navItems.map(({ label, id }) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              onClick={(e) => handleScroll(e, id)}
-              className="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-indigo-400 transition-colors font-medium"
-            >
-              {label}
-            </a>
-          ))}
+          {navItems.map(({ label, id, href, external }) =>
+            external ? (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-indigo-400 transition-colors font-medium"
+              >
+                {label}
+              </a>
+            ) : (
+              <a
+                key={id}
+                href={`#${id}`}
+                onClick={(e) => handleScroll(e, id!)}
+                className="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-indigo-400 transition-colors font-medium"
+              >
+                {label}
+              </a>
+            )
+          )}
         </div>
       </div>
     </motion.nav>

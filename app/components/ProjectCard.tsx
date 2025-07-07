@@ -1,36 +1,56 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FaMobileAlt, FaGlobe, FaLaptopCode } from 'react-icons/fa';
 
 export type ProjectProps = {
   title: string;
-  description: string;
+  about: string;
+  achievement: string;
   tech: string[];
+  platform: 'Web' | 'Mobile' | 'Both';
 };
 
-export default function ProjectCard({ title, description, tech }: ProjectProps) {
+const getPlatformIcon = (platform: string) => {
+  switch (platform) {
+    case 'Web':
+      return <FaGlobe className="text-lg text-white" />;
+    case 'Mobile':
+      return <FaMobileAlt className="text-lg text-white" />;
+    case 'Both':
+      return <FaLaptopCode className="text-lg text-white" />;
+    default:
+      return null;
+  }
+};
+
+export default function ProjectCard({ title, about, achievement, tech, platform }: ProjectProps) {
   return (
     <motion.div
-      whileHover={{
-        scale: 1.05,
-        boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)',
-      }}
-      whileTap={{ scale: 0.97 }}
-      initial={{ opacity: 0, y: 50 }}
+      className="bg-gradient-to-br from-[#1e1e2f] to-[#2b2b3f] rounded-2xl p-6 w-full sm:w-[320px] shadow-md border border-[#333348] hover:scale-[1.03] hover:shadow-xl transition duration-300 ease-in-out"
+      whileHover={{ y: -5 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="bg-white dark:bg-[#111827] border rounded-2xl p-5 w-full sm:w-[300px] transition-all duration-300"
+      transition={{ duration: 0.4 }}
     >
-      <h3 className="text-xl font-semibold mb-2 text-blue-600 dark:text-yellow-400">{title}</h3>
-      <p className="text-gray-700 dark:text-gray-300 text-sm mb-3">{description}</p>
-      <div className="flex flex-wrap gap-2">
-        {tech.map((t) => (
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="text-lg font-semibold text-indigo-400">{title}</h3>
+        <div className="bg-indigo-600 p-2 rounded-full">{getPlatformIcon(platform)}</div>
+      </div>
+      <p className="text-sm text-gray-300 mb-2">
+        <span className="font-semibold text-white">About:</span> {about}
+      </p>
+      <p className="text-sm text-gray-300 mb-4">
+        <span className="font-semibold text-white">Achievement:</span> {achievement}
+      </p>
+      <div className="flex flex-wrap gap-2 mt-2">
+        {tech.map((tag, i) => (
           <span
-            key={t}
-            className="bg-blue-100 dark:bg-indigo-800 text-blue-800 dark:text-white text-xs font-medium px-2 py-1 rounded-full"
+            key={i}
+            className="bg-indigo-800 text-white text-xs px-3 py-1 rounded-full shadow-sm"
           >
-            {t}
+            {tag}
           </span>
         ))}
       </div>

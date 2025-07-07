@@ -1,79 +1,110 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+export default function Contact() {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const closeModal = () => setShowSuccessModal(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Thank you! Form submitted 🎉');
-    // You can add email logic (Formspree, Nodemailer, etc.) later
-    setForm({ name: '', email: '', message: '' });
+  const fadeIn = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.15, duration: 0.5 },
+    }),
   };
 
   return (
-    <motion.section
+    <section
       id="contact"
-      className="min-h-screen px-6 py-20 bg-gradient-to-br from-white via-indigo-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-black text-black dark:text-white"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      className="min-h-screen pt-32 pb-20 px-6 bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white relative overflow-hidden"
     >
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-6">Contact Me</h2>
-        <p className="mb-10 text-gray-700 dark:text-gray-300">
-          Have a project, question, or just want to connect? Drop a message!
-        </p>
-
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 space-y-5 text-left"
+      <motion.div
+        className="max-w-xl mx-auto text-center z-10"
+        initial={{ scale: 0.95 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+      >
+        <motion.h2
+          className="text-4xl sm:text-5xl font-bold mb-6 leading-tight"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={0}
         >
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 text-black dark:text-white"
-          />
+          🚀 Have something exciting to test,<br /> collaborate or crash on purpose?
+        </motion.h2>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={form.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 text-black dark:text-white"
-          />
+        <motion.p
+          className="text-lg text-gray-300 mb-12"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={1}
+        >
+          🧪 Have a product that needs breaking before it breaks users? I’m your guy.
+          Let’s connect — I find bugs before your users do. Over chai, code, or conversation.
+        </motion.p>
 
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            value={form.message}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 text-black dark:text-white"
-          />
-
-          <button
-            type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition"
+        <motion.p
+          className="text-md text-gray-400 mt-10"
+          variants={fadeIn}
+          initial="hidden"
+          animate="visible"
+          custom={2}
+        >
+          🔗 Connect with me on{' '}
+          <a
+            href="https://www.linkedin.com/in/subham-acharya/"
+            className="text-sky-400 hover:underline"
+            target="_blank"
           >
-            Send Message 🚀
-          </button>
-        </form>
-      </div>
-    </motion.section>
+            LinkedIn
+          </a>{' '}
+          or 📧 drop a mail at{' '}
+          <a
+            href="mailto:subham2639@gmail.com"
+            className="text-sky-400 hover:underline"
+          >
+            subham2639@gmail.com
+          </a>
+        </motion.p>
+      </motion.div>
+
+      {/* ✅ Success Modal */}
+      <AnimatePresence>
+        {showSuccessModal && (
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-sm mx-auto text-center shadow-lg"
+              initial={{ scale: 0.8, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 50 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h3 className="text-2xl font-semibold text-indigo-600 dark:text-indigo-400 mb-4">
+                Wooohoooooo!!! 🎉
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-6">
+                Thank you for sharing your details. I will get back to you as early as possible.
+              </p>
+              <button
+                onClick={closeModal}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-md transition"
+              >
+                Okay
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   );
 }

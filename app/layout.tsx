@@ -1,13 +1,13 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Navbar from './components/Navbar';
-import CustomCursor from './components/CustomCursor'; // 👈 import
+import CustomCursor from './components/CustomCursor';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Portfolio 2.0',
-  description: 'A Next.js animated portfolio',
+  title: 'Subham-Resume', 
+  description: 'A Next.js animated portfolio of Subham Acharya',
 };
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <CustomCursor /> {/* 👈 add it */}
+        <CustomCursor />
         <Navbar />
         <div className="pt-20">{children}</div>
       </body>

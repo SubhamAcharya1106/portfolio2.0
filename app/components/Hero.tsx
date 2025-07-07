@@ -93,7 +93,7 @@ export default function Hero() {
       >
         <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} perspective={1000}>
           <Image
-            src="/images/subham1.jpg"
+            src="/images/subham2.jpg"
             alt="Subham Hero"
             width={380}
             height={380}
