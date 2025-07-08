@@ -15,7 +15,7 @@ export default function Hero() {
 
   return (
     <motion.section
-    id="Home"
+    id="home"
       className="relative min-h-screen px-6 py-20 flex flex-col md:flex-row items-center justify-between overflow-hidden bg-gradient-to-br from-indigo-100 via-white to-indigo-200 dark:from-gray-900 dark:via-gray-800 dark:to-black"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
