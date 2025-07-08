@@ -1,59 +1,55 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaMobileAlt, FaGlobe, FaLaptopCode } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+import { ProjectProps } from './ProjectCardTypes';
 
-export type ProjectProps = {
-  title: string;
-  about: string;
-  achievement: string;
-  tech: string[];
-  platform: 'Web' | 'Mobile' | 'Both';
-};
-
-const getPlatformIcon = (platform: string) => {
-  switch (platform) {
-    case 'Web':
-      return <FaGlobe className="text-lg text-white" />;
-    case 'Mobile':
-      return <FaMobileAlt className="text-lg text-white" />;
-    case 'Both':
-      return <FaLaptopCode className="text-lg text-white" />;
-    default:
-      return null;
-  }
-};
-
-export default function ProjectCard({ title, about, achievement, tech, platform }: ProjectProps) {
+export default function ProjectCard({
+  title,
+  about,
+  achievement,
+  tech,
+  platform,
+  links,
+  onClick,
+}: ProjectProps) {
   return (
     <motion.div
-      className="bg-gradient-to-br from-[#1e1e2f] to-[#2b2b3f] rounded-2xl p-6 w-full sm:w-[320px] shadow-md border border-[#333348] hover:scale-[1.03] hover:shadow-xl transition duration-300 ease-in-out"
-      whileHover={{ y: -5 }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4 }}
+      className="rounded-xl bg-white/10 p-6 text-left border border-indigo-700 shadow-lg hover:scale-[1.02] transition-all cursor-pointer relative"
+      whileHover={{ y: -4 }}
+      onClick={onClick}
     >
-      <div className="flex justify-between items-center mb-3">
-        <h3 className="text-lg font-semibold text-indigo-400">{title}</h3>
-        <div className="bg-indigo-600 p-2 rounded-full">{getPlatformIcon(platform)}</div>
+      <div className="absolute top-3 right-3 z-10">
+        <button
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent triggering card click
+            onClick?.();
+          }}
+          className="text-white hover:text-indigo-300"
+          title="View Links"
+        >
+          <FaExternalLinkAlt />
+        </button>
       </div>
-      <p className="text-sm text-gray-300 mb-2">
-        <span className="font-semibold text-white">About:</span> {about}
-      </p>
-      <p className="text-sm text-gray-300 mb-4">
-        <span className="font-semibold text-white">Achievement:</span> {achievement}
-      </p>
-      <div className="flex flex-wrap gap-2 mt-2">
-        {tech.map((tag, i) => (
+
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-sm text-gray-300 mb-2">{about}</p>
+      <p className="text-xs text-indigo-300 italic mb-2">{achievement}</p>
+
+      <div className="flex flex-wrap gap-2 mt-3">
+        {tech.map((t, i) => (
           <span
             key={i}
-            className="bg-indigo-800 text-white text-xs px-3 py-1 rounded-full shadow-sm"
+            className="bg-indigo-800 text-white text-xs px-2 py-1 rounded-full"
           >
-            {tag}
+            {t}
           </span>
         ))}
       </div>
+
+      <p className="text-xs text-right mt-4 italic text-yellow-400">
+        Platform: {platform}
+      </p>
     </motion.div>
   );
 }

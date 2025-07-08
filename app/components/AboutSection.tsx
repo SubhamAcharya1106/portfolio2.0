@@ -38,7 +38,7 @@ export default function AboutSection() {
           {typedText}
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -79,28 +79,24 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
+          {/* Single Full Image */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-center gap-4"
-          >
-            <Image
-              src="/images/subham1.jpg"
-              alt="Subham QA"
-              width={240}
-              height={240}
-              className="rounded-md border-4 border-indigo-500 shadow-lg"
-            />
-            <Image
-              src="/images/subham3.jpg"
-              alt="Subham Working"
-              width={240}
-              height={200}
-              className="rounded-md border-4 border-indigo-500 shadow-lg"
-            />
-          </motion.div>
+  initial={{ opacity: 0, x: 30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="w-full"
+>
+  <div className="relative w-full max-w-md aspect-[3/4] mx-auto rounded-md overflow-hidden shadow-2xl border-4 border-indigo-500">
+    <Image
+      src="/images/subham3.jpg"
+      alt="Subham QA"
+      fill
+      className="object-cover"
+    />
+  </div>
+</motion.div>
+
         </div>
       </div>
     </motion.section>
