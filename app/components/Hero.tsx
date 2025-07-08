@@ -21,7 +21,6 @@ export default function Hero() {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Particles */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -48,7 +47,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Left Text */}
       <div className="relative z-10 flex-1 text-center md:text-left space-y-6">
         <motion.h1
           className="text-4xl sm:text-5xl font-bold leading-tight text-gray-900 dark:text-white"
@@ -84,7 +82,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Right Image + Stats */}
       <motion.div
         className="relative z-10 flex-1 mt-10 md:mt-0 flex flex-col items-center gap-6"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -101,7 +98,6 @@ export default function Hero() {
           />
         </Tilt>
 
-        {/* Stats Box */}
         <div className="w-full max-w-md bg-white/70 dark:bg-white/10 backdrop-blur-sm rounded-xl shadow-lg px-6 py-4 flex justify-between items-center text-center">
           {[
             { number: '4+', label: 'Years of Experience' },
@@ -116,7 +112,6 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Shimmer Style */}
       <style jsx>{`
         .animate-shimmer {
           background-size: 200% auto;

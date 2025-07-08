@@ -38,7 +38,6 @@ export default function AboutSection() {
           {typedText}
         </motion.p>
 
-        {/* Text First, Then Tools, Then Image */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-center">
           {/* Text Section */}
           <motion.div
@@ -80,7 +79,6 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -96,7 +94,7 @@ export default function AboutSection() {
               className="rounded-md border-4 border-indigo-500 shadow-lg"
             />
             <Image
-              src="/images/subham4.jpg"
+              src="/images/subham3.jpg"
               alt="Subham Working"
               width={240}
               height={200}
