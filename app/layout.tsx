@@ -9,7 +9,7 @@ export const metadata = {
   title: 'Subham-Portfolio',
   description: 'A Next.js animated portfolio of Subham Acharya',
   icons: {
-    icon: '/favicon2.ico', // 👈 new favicon
+    icon: '/favicon2.ico', 
   },
 };
 
