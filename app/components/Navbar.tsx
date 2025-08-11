@@ -36,9 +36,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full bg-white dark:bg-[#0e0e1c] shadow-md z-50 px-6 py-4"
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold text-blue-600 dark:text-white">Portfolio 2.0</h1>
+        <h1 className="text-xl font-bold text-blue-600 dark:text-white">Subham</h1>
 
-        {/* Desktop */}
         <div className="space-x-6 hidden md:flex">
           {navItems.map(({ label, id, href, external }) =>
             external ? (
@@ -64,7 +63,6 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile Hamburger */}
         <div className="md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -75,7 +73,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
