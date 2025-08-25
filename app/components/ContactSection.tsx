@@ -73,7 +73,6 @@ export default function Contact() {
         </motion.p>
       </motion.div>
 
-      {/* ✅ Success Modal */}
       <AnimatePresence>
         {showSuccessModal && (
           <motion.div

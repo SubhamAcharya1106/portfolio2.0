@@ -17,9 +17,8 @@ export default function Navbar() {
 
   const handleScroll = (e: any, id: string) => {
     e.preventDefault();
-    setMenuOpen(false); // first close the mobile menu
+    setMenuOpen(false); 
 
-    // slight delay to ensure menu closes before scroll
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) {

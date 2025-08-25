@@ -77,7 +77,6 @@ export default function ExperienceSection() {
                       {exp.company} • {exp.date}
                     </p>
                   </div>
-                  {/* Accordion icon */}
                   <div className="text-blue-700 dark:text-indigo-300">
                     {isOpen ? <FaMinus /> : <FaPlus />}
                   </div>

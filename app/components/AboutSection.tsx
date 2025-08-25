@@ -28,7 +28,6 @@ export default function AboutSection() {
       className="min-h-screen px-6 py-12 md:py-16 bg-white dark:bg-gray-900 text-black dark:text-white"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Title */}
         <motion.p
           className="text-center text-xl sm:text-2xl text-indigo-600 dark:text-indigo-400 font-mono mb-6"
           initial={{ opacity: 0 }}
@@ -39,7 +38,6 @@ export default function AboutSection() {
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -60,7 +58,6 @@ export default function AboutSection() {
               QA is not just about testing — it’s about quality ownership.
             </p>
 
-            {/* Tools Section */}
             <div className="mt-6">
               <h3 className="text-lg font-semibold mb-2">Core Tools & Tech</h3>
               <div className="flex flex-wrap gap-2">
@@ -79,7 +76,6 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Single Full Image */}
           <motion.div
   initial={{ opacity: 0, x: 30 }}
   whileInView={{ opacity: 1, x: 0 }}
